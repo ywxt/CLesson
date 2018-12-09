@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace CLesson
 {
@@ -18,9 +20,10 @@ namespace CLesson
             var encoding = Console.ReadLine();
             try
             {
+                var defaultValue = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText("config/config.json"));
                 var e = string.IsNullOrWhiteSpace(encoding) ? Encoding.GetEncoding(0) : Encoding.GetEncoding(encoding);
-                oldValue = !string.IsNullOrWhiteSpace(oldValue) ? oldValue : "崔文辉 2018117504";
-                newValue = !string.IsNullOrWhiteSpace(newValue) ? newValue : "孔德贵 2018117528";
+                oldValue = !string.IsNullOrWhiteSpace(oldValue) ? oldValue :defaultValue.old;
+                newValue = !string.IsNullOrWhiteSpace(newValue) ? newValue : defaultValue.@new;
                 var program = new CProgram
                 {
                     Encoding = e,

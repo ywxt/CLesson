@@ -9,7 +9,7 @@ namespace CLesson
     {
         public byte[] OldValue { get; set; }
         public byte[] NewValue { get; set; }
-        public Encoding Encoding { get; set; };
+        public Encoding Encoding { get; set; }
 
         public void Replace(string path)
         {
